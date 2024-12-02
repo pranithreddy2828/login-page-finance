@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In / Sign Up / Forgot Password</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="container" class="container sign-in">
+        <!-- FORM SECTION -->
+        <div class="row">
+            <!-- SIGN UP -->
+            <div class="col align-items-center flex-col sign-up">
+                <div class="form-wrapper align-items-center">
+                    <form class="form sign-up" action="{{ url_for('signup') }}" method="POST">
+                        <div class="input-group">
+                            <i class="bx bxs-user"></i>
+                            <input type="text" name="username" placeholder="Username" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="bx bx-mail-send"></i>
+                            <input type="email" name="email" placeholder="Email" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="bx bxs-lock-alt"></i>
+                            <input type="password" name="password" placeholder="Password" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="bx bxs-lock-alt"></i>
+                            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                        </div>
+                        <button type="submit">Sign Up</button>
+                        <p>
+                            <span>Already have an account?</span>
+                            <b onclick="toggleToSignIn()" class="pointer">Log in here</b>
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- SIGN IN -->
+            <div class="col align-items-center flex-col sign-in">
+                <div class="form-wrapper align-items-center">
+                    <form class="form sign-in" action="{{ url_for('signin') }}" method="POST">
+                        <div class="input-group">
+                            <i class="bx bxs-user"></i>
+                            <input type="text" name="username" placeholder="Username" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="bx bxs-lock-alt"></i>
+                            <input type="password" name="password" placeholder="Password" required>
+                        </div>
+                        <button type="submit">Log In</button>
+                        <p>
+                            <b onclick="toggleToForgotPassword()" class="pointer">Forgot password?</b>
+                        </p>
+                        <p>
+                            <span>Don't have an account?</span>
+                            <b onclick="toggleToSignUp()" class="pointer">Sign up here</b>
+                        </p>
+                    </form>
+                </div>
+            </div>
+
+            <!-- FORGOT PASSWORD -->
+            <div class="col align-items-center flex-col forgot-password">
+                <div class="form-wrapper align-items-center">
+                    <form class="form forgot-password" action="{{ url_for('forgot_password') }}" method="POST">
+                        <div class="input-group">
+                            <i class="bx bx-mail-send"></i>
+                            <input type="email" name="email" placeholder="Email" required>
+                        </div>
+                        <button type="submit">Reset Password</button>
+                        <p>
+                            <span>Remembered your password?</span>
+                            <b onclick="toggleToSignIn()" class="pointer">Log in here</b>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
